@@ -27,7 +27,7 @@ function git_indicator {
     # hearts content 
     if [[ $git_status =~ "" ]] && [[ $git_status =~ "" ]]; then
         echo -ne # echo out something to indicate the state that you just tested for
-    elif [[ ! $git_status =~ "" ]]; then
+    elif [[ ! $git_status =~ "Your branch is ahead of" ]]; then
         echo -ne 
     else
         echo -ne

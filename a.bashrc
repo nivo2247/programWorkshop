@@ -28,8 +28,10 @@ function git_indicator {
     # hearts content 
     if [[ $git_status =~ "modified:" ]] || [[ $git_status =~ "new file:" ]]; then
         echo -ne "Dirty" #echo out something to indicate the state that you just tested for
+    elif [[ ! $git_status =~ "Your branch is ahead of" ]]; then
+        echo -ne 
     else
-        echo -ne "Clean"
+        echo -ne
     fi
 }
 
