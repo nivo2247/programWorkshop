@@ -9,7 +9,6 @@ alias ls="ls -G"  # colorized ls
 
 # For example, this is the color reset code
 RESET="\033[0m"
-EXAMPLE_COLOR_REPLACE_ME="\033[01;32m\]"
 
 function git_indicator {
     local git_status="$(git status 2> /dev/null)"  # redirect stderr to /dev/null -- we just need it in this variable
@@ -53,13 +52,10 @@ function git_branch {
 
 # edit to your heart's content
 # base of your PS 1
-PS1="\W"
-PS1+="\[\$(git_indicator)\]"        # indicates git status
+PS1="\[\$(git_indicator)\]"        # indicates git status
 PS1+="\$(git_branch)"           # prints current branch
 PS1+="\[$RESET\] $ " # prints out "blah $" -- change this!
-#echo -ne $PS1
-#echo -ne "PS1"
 
 # don't forget to export it at the end!
 # make sure that you run source ~/.bashrc to see the changes from your PS1!
-#export PS1
+export PS1
