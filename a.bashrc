@@ -17,7 +17,7 @@ function git_indicator {
     echo $git_status # will help you decide what strings to test for, remove it later
 
     DIR=$(pwd)
-    echo -ne $DIR
+    #echo -ne $DIR
 
     # insert strings to test for in the if statements below
     # example of using an "and" (&&)
@@ -26,8 +26,8 @@ function git_indicator {
     # be very very careful of spacing in bash-land!
     # the following if statements are examples -- fill them in, rearrange them, etc to your
     # hearts content 
-    if [[ $git_status =~ "" ]] && [[ $git_status =~ "" ]]; then
-        echo -ne # echo out something to indicate the state that you just tested for
+    if [[ $git_status =~ "modified:" ]] || [[ $git_status =~ "new file:" ]]; then
+        echo -ne "Dirty" #echo out something to indicate the state that you just tested for
     elif [[ ! $git_status =~ "" ]]; then
         echo -ne 
     else
@@ -43,10 +43,10 @@ function git_branch {
 
     if [[ $git_status =~ $on_branch ]]; then
           local branch=${BASH_REMATCH[1]}
-          echo "($branch)"
+          #echo "($branch)"
     elif [[ $git_status =~ $on_commit ]]; then
           local commit=${BASH_REMATCH[1]}
-          echo "($commit)"
+          #echo "($commit)"
     fi
 }
 
@@ -57,7 +57,8 @@ PS1="\W"
 PS1+="\[\$(git_indicator)\]"        # indicates git status
 PS1+="\$(git_branch)"           # prints current branch
 PS1+="\[$EXAMPLE_COLOR_REPLACE_ME\] blah \$\[$RESET\] " # prints out "blah $" -- change this!
-echo -ne $PS1
+#echo -ne $PS1
+#echo -ne "PS1"
 
 # don't forget to export it at the end!
 # make sure that you run source ~/.bashrc to see the changes from your PS1!
