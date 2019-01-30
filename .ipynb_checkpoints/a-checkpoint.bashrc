@@ -8,7 +8,7 @@ alias ls="ls -G"  # colorized ls
 # Recommendation: define named variables, then use those variables
 
 # For example, this is the color reset code
-RESET="\033[0m"
+RESET="\033[0m"a
 
 function git_indicator {
     local git_status="$(git status 2> /dev/null)"  # redirect stderr to /dev/null -- we just need it in this variable
